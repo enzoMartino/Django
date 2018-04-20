@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head_block %}
+
+    <title>Index</title>
+
+    <link rel="stylesheet" href="{% static "css/index.css" %}">
+
+{% endblock %}
+
+{% block body_block %}
+
+    <div class="jumbotron">
+        {% if not user.is_authenticated %}
+            <h1>This is index.html</h1>
+        {% else %}
+            <h1>Welcome {{user.username}}</h1>
+        {% endif %}
+    </div>
+    
+
+     
+        <div class="row">
+            <div class="col col-md-6">{{ text|cut:"world" }}</div>
+            <div class="col col-md-6">{{ number|add:"99" }}</div>
+        </div>
+        
+
+{% endblock %}
+    

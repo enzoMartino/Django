@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head_block %}
+  
+    <title>Sign up</title>
+    
+{% endblock %}
+
+{% block body_block %}
+
+    {% if isRegistered %}
+
+        <div class="jumbotron">
+            <h1>Thank you for your registration!</h1>
+            <h1>Go to <a href="{% url 'first_app:sign_in' %}">Sign in</a> page to Login</h1>
+        </div>
+
+    {% else %}
+
+    <div class="jumbotron">
+        <h1>This is sign_up.hmtl</h1>
+        <h1>Fill out the form</h1>
+    </div>
+        
+
+        <form action="#" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+  
+
+    {% endif %}
+    
+{% endblock %}

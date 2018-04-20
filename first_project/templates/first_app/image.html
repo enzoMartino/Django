@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head_block %}
+    
+    <link rel="stylesheet" href="{% static "css/image.css" %}">
+
+    <title>Image</title>
+
+{% endblock %}
+
+
+{% block body_block %}
+
+    <h1>This is image.html</h1>
+
+    <img width="250" src="/media/images/zoidberg.png" alt="zoidberg">
+
+{% endblock %}
