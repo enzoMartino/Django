@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+
+{% block head_block %}
+
+    <title>School Detail</title>
+
+{% endblock %}
+
+
+
+{% block body_block %}
+
+    <h1>Welcome to the School Detail Page</h1>
+
+    <ul>
+        <li> School Name: {{school_details.name}} </li>
+        <li> School Principal: {{school_details.principal}} </li>
+        <li> School Location: {{school_details.location}} </li>
+        <li> School's Students: </li>
+            <ul>
+                {% for student in school_details.students.all %}
+                    
+                    <li> {{student.name}} who is {{student.age}} years old </li>
+
+                {% endfor %}
+            </ul>
+    </ul>
+    <a class="btn btn-warning" href="{% url 'first_app:school_update' school_details.id %}">Update</a>
+    <a class="btn btn-danger" href="{% url 'first_app:school_delete' school_details.id %}">Delete</a>
+    
+
+{% endblock %}

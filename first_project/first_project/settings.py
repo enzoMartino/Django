@@ -15,7 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 print(BASE_DIR)
-TEMPLATES_DIR = os.path.join(os.path.join(BASE_DIR, "templates"), "first_app")
+TEMPLATES_DIR = os.path.join(os.path.join(os.path.join(BASE_DIR, "first_app"), "templates"), "first_app")
 print(TEMPLATES_DIR)
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 MEDIA_DIR = os.path.join(BASE_DIR, "media")

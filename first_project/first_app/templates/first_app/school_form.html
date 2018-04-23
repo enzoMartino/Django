@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block body_block %}
+
+    <div class="jumbotron">
+        <h1>
+            {% if not form.instance.pk %}
+            
+                Create School
+
+            {% else %}
+
+                Update School
+
+            {% endif %}
+        </h1>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        {% if not form.instance.pk %}
+
+            <input type="submit" class="btn btn-primary" value="Create">
+        
+        {% else %}
+
+            <input type="submit" class="btn btn-primary" value="Update">
+        
+        {% endif %}
+    </form>
+
+{% endblock %}

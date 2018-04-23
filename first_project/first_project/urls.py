@@ -21,8 +21,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.index, name = 'index'),
-    path('first_app/', include('first_app.urls')),
+    path('', views.Index_View.as_view(), name = 'index'),
+    path('first_app/', include('first_app.urls', namespace='first_app')),
     path('admin/', admin.site.urls),
     path('sign_out/', views.sign_out, name = 'sign_out'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

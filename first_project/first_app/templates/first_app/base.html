@@ -18,7 +18,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="{% url 'first_app:index' %}">Index</a>
+        <a class="navbar-brand" href="{% url 'index' %}">Index</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,10 +26,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'first_app:access_records' %}" class="badge badge-primary">Access Records</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'first_app:image' %}" class="badge badge-primary">Image</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'first_app:users' %}" class="badge badge-primary">Users</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'first_app:help' %}" class="badge badge-info">Help</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'first_app:access_records' %}">Access Records</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'first_app:image' %}">Image</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'first_app:users' %}">Users</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'first_app:help' %}">Help</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'first_app:school_list' %}">Schools</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'first_app:help' %}">Help</a></li>
             </ul>
 
             <ul class="navbar-nav ml-auto">

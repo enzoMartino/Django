@@ -1,18 +1,58 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
-from first_app.models import Topic, WebPage, AccessRecord, User
+from first_app.models import Topic, WebPage, AccessRecord, User, School, Student
 from . import forms
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-
+from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
 # Create your views here.
- 
-def index(request):
-    context_dict = {'text':'hello world', 'number':100}
+
+class Index_View(TemplateView):
+
+    template_name = 'index.html'
+
+    # **kwargs (key word arguments)
+    # *args (parameters as a tuple)
+    def get_context_data(self, **kwargs):
+        context_dict = super().get_context_data(**kwargs)
+        context_dict['text'] = 'hello world'
+        context_dict['number'] = 100
+        return context_dict
+
+
+class School_Create_View(CreateView):
+    model = School
+    fields = ('name', 'principal', 'location')
+
+
+class School_Update_View(UpdateView):
+    model = School
+    fields = ('name', 'principal')
+
+
+class School_Delete_View(DeleteView):
+    model = School
+    success_url = reverse_lazy("first_app:school_list")
+
+
+class School_List_View(ListView):
+    model = School
+    # school_list is the default context_object_name 
+    context_object_name = 'schools'
+
+class School_Detail_View(DetailView):
+    model = School
+    template_name = 'school_detail.html'
+    context_object_name = 'school_details'
+        
+# We changed the function based index view with the above
+# class based index view  
+# def index(request):
+#     context_dict = {'text':'hello world', 'number':100}
     
-    return render(request, 'index.html', context=context_dict)
+#     return render(request, 'index.html', context=context_dict)
 
 
 @login_required
