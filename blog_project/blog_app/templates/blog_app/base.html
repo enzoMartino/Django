@@ -3,9 +3,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -15,35 +18,38 @@
 </head>
 <body>
 
-    <nav class=" techfont navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand bigbrand" href="{% url 'post_list' %}">My Blog</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light techfont">
+        <a class="navbar-brand bigbrand" href="{% url 'posts_list' %}">My Blog</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
               
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="https://www.github.com">Github</a></li>
-                <li><a href="https://www.linkedin.com">Linkedin</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://www.github.com">Github</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com">Linkedin</a></li>
             </ul>
 
-            {% if user.is_authenticated %}
+            <ul class="navbar-nav ml-auto">
+
+                {% if user.is_authenticated %}
             
-                <ul class="navbar-nav ml-auto">
+                
                     <li><a href="{% url 'post_create' %}">Create Post</a></li>
                     <li><a href="{% url 'drafts_list' %}">Drafts List</a></li>
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                     <li>Welcome {{user.username}}</li>
-                </ul>
+                
 
-            {% else %}
+                {% else %}
 
-                <ul class="navbar-nav ml-auto">
-                    <li><a href="{% url 'login' %}"> <span class="glyphicon glyphicon-user"></span></a></li>
-                </ul>
+                   
+                    <li><a href="{% url 'login' %}"> <span class="fas fa-user"></span></a></li>
+                   
             
-            {% endif %}
+                {% endif %}
+            </ul>
         </div>
 
     </nav>

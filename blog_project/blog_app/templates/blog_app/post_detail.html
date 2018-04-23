@@ -22,8 +22,8 @@
 
     {% if user.is_authenticated %}
 
-        <a class="btn btn-primary" href="{% url 'post_update' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <a class="btn btn-primary" href="{% url 'post_delete' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+        <a class="btn btn-primary" href="{% url 'post_update' pk=post.pk %}"><span class="fas fa-edit"></span></a>
+        <a class="btn btn-primary" href="{% url 'post_delete' pk=post.pk %}"><span class="fas fa-trash-alt"></span></a>
     
     {% endif %}
 
@@ -42,8 +42,8 @@
 
                 {% if not comment.is_approved %}
 
-                    <a class="btn btn-primary" href="{% url 'comment_delete' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-                    <a class="btn btn-primary" href="{% url 'comment_approve' pk=post.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+                    <a class="btn btn-primary" href="{% url 'comment_delete' pk=post.pk %}"><span class="fas fa-trash-alt"></span></a>
+                    <a class="btn btn-primary" href="{% url 'comment_approve' pk=post.pk %}"><span class="fas fa-check"></span></a>
                 
                 {% endif %}
 

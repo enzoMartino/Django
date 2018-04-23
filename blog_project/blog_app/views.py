@@ -18,7 +18,7 @@ class Post_List_View(ListView):
     model = models.Post
 
     def get_queryset(self):
-        return models.Post.objects.filter(publish_date__lte=timezone.now()).order_by('-published_date')
+        return models.Post.objects.filter(publish_date__lte=timezone.now()).order_by('publish_date')
 
 
 class Post_Detail_View(DetailView):
