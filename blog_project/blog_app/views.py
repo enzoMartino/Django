@@ -50,6 +50,7 @@ def add_comment_to_post(request, pk):
 @login_required
 def post_publish(request, pk):
     post = get_object_or_404(models.Post, pk=pk)
+    # print("I'm publishing")
     post.publish()
     return redirect('post_detail', pk=post.pk)
 
@@ -99,7 +100,7 @@ class Post_Update_View(LoginRequiredMixin, UpdateView):
 
 class Post_Delete_View(DeleteView, LoginRequiredMixin):
     
-    success_url = reverse_lazy('post_list')
+    success_url = reverse_lazy('posts_list')
 
     model = models.Post
 

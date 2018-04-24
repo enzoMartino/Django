@@ -14,11 +14,11 @@
     
     {% else %}
 
-        <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk%}">Publish</a>
+        <a class="btn btn-primary" href="{% url 'post_publish' pk=post.pk%}">Publish</a>
 
     {% endif %}
 
-    <p class="postcontent"> {{post.title|safe|linebreaksbr}} </p>
+    <p class="postcontent"> {{post.text|safe|linebreaksbr}} </p>
 
     {% if user.is_authenticated %}
 
@@ -29,11 +29,11 @@
 
     <hr>
 
-    <a class="btn btn-primary btn-comment" href="{% url 'add_comment_to_post' pk=post.pk">Add comment</a>
+    <a class="btn btn-primary btn-comment" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 
     <div class="container">
 
-        {% for comment in post.comment.all %}
+        {% for comment in post.comments.all %}
 
             <br>
             {% if user.is_authenticated or comment.is_approved %}
@@ -42,8 +42,8 @@
 
                 {% if not comment.is_approved %}
 
-                    <a class="btn btn-primary" href="{% url 'comment_delete' pk=post.pk %}"><span class="fas fa-trash-alt"></span></a>
-                    <a class="btn btn-primary" href="{% url 'comment_approve' pk=post.pk %}"><span class="fas fa-check"></span></a>
+                    <a class="btn btn-primary" href="{% url 'comment_delete' pk=comment.pk %}"><span class="fas fa-trash-alt"></span></a>
+                    <a class="btn btn-primary" href="{% url 'comment_approve' pk=comment.pk %}"><span class="fas fa-check"></span></a>
                 
                 {% endif %}
 
