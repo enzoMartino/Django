@@ -4,16 +4,24 @@
 
 {% block group_content %}
 
-    <h4>Create a new group!</h4>
+    <div class="col-12">
 
-    <form action="{% url 'grous:create' %}" method="post">
+        <h4>Create a new group!</h4>
 
-        {% csrf_token %}
+    </div>
 
-        {% bootstrap_form form %}
+    <div class="col-12">
 
-        <input type="submit" class="btn btn-primary btn-large" value="Create Group">
+        <form action="{% url 'groups:create' %}" method="post">
 
-    </form>
+            {% csrf_token %}
+            
+            {% bootstrap_form form %}
+            
+            <input type="submit" class="btn btn-primary btn-large" value="Create Group">
+            
+        </form>
+
+    </div>
 
 {% endblock group_content %}
