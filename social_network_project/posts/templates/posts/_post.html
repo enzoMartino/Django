@@ -7,25 +7,27 @@
 
     <div class="media-body">
 
-        <strong>{{post.user.username}}</strong>
-
         <h5 class="media-heading">
 
-            <span class="username"><a href="{% url 'posts:for_user' username=post.user.username%}"></a></span>
-
             <time class="time">
+                
+                <span class="username"><a href="{% url 'posts:for_user' username=post.user.username%}">@{{post.user.username}}</a></span>
 
-                <a href="{% url 'posts:single'  username=post.user.username pk=post.pk %}"></a>
+                {{post.create_date}}
+
+                <a href="{% url 'posts:single' username=post.user.username pk=post.pk %}">View Details</a>
 
             </time>
 
         </h5>
+
+        <br>
         
         <div class="media-footer">
 
             {% if user.is_authenticated and post.user == user %}
 
-                <div class="btn-group" role="group" hidden="hide_delete">
+                <div class="btn-group" role="group">
             
                     <a href="{% url 'posts:delete' pk=post.pk %}" class="btn btn-danger">Delete Post</a>
                     

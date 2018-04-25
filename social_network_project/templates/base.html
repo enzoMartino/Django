@@ -9,6 +9,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/master.css' %}">
+    <link rel="stylesheet" href="{% static '/social_network_project/css/master.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Star Social</title>
@@ -26,7 +27,8 @@
 
                     {% if user.is_authenticated %}
 
-                        <li class="nav-item"> <a class="nav-link" href="{% url 'posts:create' %}">Post</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{% url 'posts:all' %}">Posts</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{% url 'posts:create' %}">Create Post</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{% url 'groups:all' %}">Groups</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{% url 'groups:create' %}">Create Group</a></li>
 
@@ -59,6 +61,8 @@
         
     {% block content %}
     {% endblock content %}
+
+    <script src="{% static 'social_network_project/js/master.js' %}"></script>
     
 </body>
 </html>

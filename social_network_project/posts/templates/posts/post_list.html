@@ -2,15 +2,17 @@
 
 {% block prepost %}
 
-    <div class="col-md-4">
+    <div class="col-6">
+
+        <br><br><br>
 
         {% if request.user.is_authenticated %}
 
             <div class="card card-with-shadow">
 
-                <div class="content">
+                <div class="card-body">
 
-                    <h5 class="title">Your Groups</h5>
+                    <h5 class="card-title">Your Groups</h5>
 
                     <ul class="list-unstyled">
 
@@ -25,14 +27,26 @@
                 </div>
 
             </div>
+
+            <br><br><br>
+
+            <div class="btn-group" role="group">
+        
+                <a href="{% url 'posts:create' %}" class="btn btn-md btn-fill btn-warning">Create New Post</a>
+    
+                <a href="{% url 'posts:create' %}" class="btn btn-md btn-fill btn-warning"><i class="fas fa-plus"></i></a>
+    
+            </div>
         
         {% endif %}
 
+        <br><br><br>
+
         <div class="card card-with-shadow">
 
-            <div class="content">
+            <div class="card-body">
 
-                <h5 class="title">All Groups</h5>
+                <h5 class="card-title">All Groups</h5>
 
                 <ul class="list-unstyled">
 
@@ -55,11 +69,13 @@
 
 {% block post_content %}
 
-    <div class="col-md-8">
+    <div class="col-6">
+
+        <br><br><br>
 
         {% for post in post_list %}
 
-            {% include "posts/_post.hmtl" with hide_delete=False %}
+            {% include "posts/_post.html" with hide_delete=False %}
         
         {% endfor %}
 
