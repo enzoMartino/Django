@@ -18,7 +18,30 @@ class PostList(SelectRelatedMixin, generic.ListView):
 
     model = models.Post
 
+    template_name = 'posts/post_list.html'
+
     select_related = ('user', 'group')
+
+    def get_queryset(self):
+
+        self.user_groups = models.Group.objects.filter(members__user__exact=self.kwargs.get('username'))
+
+        print(self.user_groups)
+
+        self.other_groups = models.Group.objects.exclude(members__user__exact=self.kwargs.get('username'))
+
+        print(self.other_groups)
+
+    def get_context_data(self, **kwargs):
+
+        context = generic.ListView.get_context_data(self, **kwargs)
+
+        context.update({"user_groups":self.user_groups, "other_groups":self.other_groups})
+
+        print("I'm here")
+        print(context['user_groups'][0])
+
+        return context
 
 
 class UserPosts(generic.ListView):
