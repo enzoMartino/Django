@@ -53,7 +53,7 @@ class PostDetail(SelectRelatedMixin, generic.DetailView):
 
     model = models.Post
 
-    select_related = ('user', group)
+    select_related = ('user', 'group')
 
     def get_queryset(self):
 
