@@ -24,22 +24,19 @@ class PostList(SelectRelatedMixin, generic.ListView):
 
     def get_queryset(self):
 
-        self.user_groups = models.Group.objects.filter(members__user__exact=self.kwargs.get('username'))
+        my_user = models.User.objects.filter(username=self.kwargs.get('username')).get()
 
-        print(self.user_groups)
+        self.user_groups = models.Group.objects.all().filter(members=my_user)
 
-        self.other_groups = models.Group.objects.exclude(members__user__exact=self.kwargs.get('username'))
+        self.other_groups = models.Group.objects.all().exclude(members=my_user)
 
-        print(self.other_groups)
+        self.post_list = models.Post.objects.all()
 
     def get_context_data(self, **kwargs):
 
         context = generic.ListView.get_context_data(self, **kwargs)
 
-        context.update({"user_groups":self.user_groups, "other_groups":self.other_groups})
-
-        print("I'm here")
-        print(context['user_groups'][0])
+        context.update({"user_groups":self.user_groups, "other_groups":self.other_groups, "post_list":self.post_list})
 
         return context
 
