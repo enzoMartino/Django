@@ -1,4 +1,4 @@
-{% extends "posts/post_base" %}
+{% extends "posts/post_base.html" %}
 
 {% block prepost %}
 
@@ -59,7 +59,7 @@
 
         {% for post in post_list %}
 
-            {% include "posts/_post.hmtl" %}
+            {% include "posts/_post.hmtl" with hide_delete=False %}
         
         {% endfor %}
 

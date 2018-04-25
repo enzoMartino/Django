@@ -1,5 +1,7 @@
 
-<div class="post-media">
+<div class="col-12 post-media">
+
+    <br><br>
 
     <h3>{{post.message_html|safe}}</h3>
 
@@ -22,17 +24,26 @@
         <div class="media-footer">
 
             {% if user.is_authenticated and post.user == user %}
-            
-                <a href="{% url 'posts:delete'  pk=post.pk %}" title="delete" class="btn btn-simple">
-                    
-                    <i class="fas fa-trash-alt">Delete Post</i>
 
-                </a>
+                <div class="btn-group" role="group" hidden="hide_delete">
+            
+                    <a href="{% url 'posts:delete' pk=post.pk %}" class="btn btn-danger">Delete Post</a>
+                    
+                    <a class="btn btn-danger" href="{% url 'posts:delete' pk=post.pk %}"><i class="fas fa-trash-alt"></i></a> 
+
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
 
             {% endif %}
 
         </div>
 
     </div>
+
+    <br><br>
 
 </div>

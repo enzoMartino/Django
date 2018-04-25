@@ -14,7 +14,7 @@ class CreateGroup(LoginRequiredMixin, generic.CreateView):
     model = models.Group
 
 
-class SingleGroup(generic.DeleteView):
+class SingleGroup(generic.DetailView):
 
     model = models.Group
 

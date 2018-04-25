@@ -19,8 +19,14 @@
         </div>
 
         {% if user.is_authenticated %}
+
+            <div class="btn-group" role="group">
         
-            <a href="{% url 'posts:create' %}" class="btn btn-md btn-fill btn-warning">Create New Group <i class="fas fa-plus"></i></a>
+                <a href="{% url 'groups:create' %}" class="btn btn-md btn-fill btn-warning">Create New Group</a>
+
+                <a href="{% url 'groups:create' %}" class="btn btn-md btn-fill btn-warning"><i class="fas fa-plus"></i></a>
+
+            </div>
 
         {% endif %}
 
@@ -35,41 +41,50 @@
 
         <div class="list-group">
 
-            {% for group in object_list %}
+            {% if object_list %}
+            
 
-                <a class="list-group-item" href="{% url 'groups:single' slug=group.slug %}">
+                {% for group in object_list %}
 
-                    <h3 class="title list-group-item-heading">{{group.name}}</h3>
+                    <a class="list-group-item" href="{% url 'groups:single' slug=group.slug %}">
 
-                    <div class="list-group-item-text container-fluid">
+                        <h3 class="title list-group-item-heading">{{group.name}}</h3>
 
-                        {{group.description_html|safe}}
+                        <div class="list-group-item-text container-fluid">
 
-                        <div class="row">
+                            {{group.description_html|safe}}
 
-                            <div class="col-md-4">
+                            <div class="row">
 
-                                <span class="badge">{{group.members.count}}</span>
+                                <div class="col-md-4">
 
-                                member {{group.members.count|pluralize}}
+                                    <span class="badge">{{group.members.count}}</span>
 
-                            </div>
+                                    member{{group.members.count|pluralize}}
 
-                            <div class="col-md-4">
+                                </div>
 
-                                <span class="badge">{{group.posts.count}}</span>
+                                <div class="col-md-4">
 
-                                post {{group.posts.count|pluralize}}
+                                    <span class="badge">{{group.posts.count}}</span>
+
+                                    post{{group.posts.count|pluralize}}
+
+                                </div>
 
                             </div>
 
                         </div>
 
-                    </div>
+                    </a>
+                
+                {% endfor %}
 
-                </a>
-            
-            {% endfor %}
+            {% else %}
+
+                <h1>There are no groups yet!</h1>
+
+            {% endif %}
 
         </div>
 

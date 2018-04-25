@@ -31,7 +31,7 @@ class UserPosts(generic.ListView):
 
         try:
 
-            self.post.user = User.objects.prefetch_related('post').get(username_iexact=self.kwargs.get('username'))
+            self.post_user = User.objects.prefetch_related('post').get(username_iexact=self.kwargs.get('username'))
 
         except User.DoesNotExist:
 
@@ -39,7 +39,7 @@ class UserPosts(generic.ListView):
 
         else:
 
-            return self.post_user_posts.all()
+            return self.post_user.posts.all()
 
     def get_context_data(self, **kwargs):
 

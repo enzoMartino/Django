@@ -2,11 +2,20 @@
 
 {% block pregroup %}
 
-    <h1>{{group.name}}</h1>
+    <div class="col-12">
 
-    <h2>Members Count: {{group.members.count}}</h2>
+        <h1>{{group.name}}</h1>
 
-    <div class="content">
+        <br>
+
+        <h2>Members Count: {{group.members.count}}</h2>
+
+        <br>
+        <br>
+
+    </div>
+
+    <div class="content col-12">
 
         {% if user in group.members.all %}
 
@@ -28,13 +37,13 @@
 
         {% if group.posts.count == 0 %}
 
-            <h2>No posts in this group yet</h2>
+            <h2>No posts in this group yet!</h2>
         
         {% else %}
 
             {% for post in group.posts.all %}
 
-                {% include 'posts/_post.html' %}
+                {% include 'posts/_post.html' with hide_delete=False %}
             
             {% endfor %}
             
