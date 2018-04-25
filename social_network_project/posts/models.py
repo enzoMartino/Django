@@ -10,7 +10,7 @@ User = get_user_model()
 
 class Post(models.Model):
 
-    user = models.ForeignKey(User, related_name='posts')
+    user = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
 
     create_date = models.DateTimeField(auto_now=True)
 
@@ -18,7 +18,7 @@ class Post(models.Model):
 
     message_html = models.TextField(editable=False)
 
-    group = models.ForeignKey(Group, related_name='posts', null=True, blank=True)
+    group = models.ForeignKey(Group, related_name='posts', null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
 

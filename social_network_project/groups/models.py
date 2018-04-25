@@ -43,11 +43,11 @@ class Group(models.Model):
 
         ordering = ['name']
 
-class GroupMember(modls.Model):
+class GroupMember(models.Model):
 
-    group = models.ForeignKey(Group, related_name='memberships')
+    group = models.ForeignKey(Group, related_name='memberships', on_delete=models.CASCADE)
 
-    user = models.ForeignKey(User, related_name='user_groups')
+    user = models.ForeignKey(User, related_name='user_groups', on_delete=models.CASCADE)
 
 
     def __str__(self):
@@ -59,6 +59,4 @@ class GroupMember(modls.Model):
 
         unique_together = ('group', 'user')
 
-    passfrom django.db import models
 
-# Create your models here.
