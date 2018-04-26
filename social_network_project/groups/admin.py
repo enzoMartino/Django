@@ -9,6 +9,8 @@ class GroupAdmin(admin.ModelAdmin):
 
     search_fields = ['name']
 
+    list_filter = ['members']
+
 
 class GroupMemberInline(admin.TabularInline):
 
