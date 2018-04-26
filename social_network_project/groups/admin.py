@@ -11,6 +11,9 @@ class GroupAdmin(admin.ModelAdmin):
 
     list_filter = ['members']
 
+    list_display = ['name', 'description', 'slug',]
+
+
 
 class GroupMemberInline(admin.TabularInline):
 
