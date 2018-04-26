@@ -7,6 +7,8 @@ class GroupAdmin(admin.ModelAdmin):
 
     fields = ['description', 'name', 'slug',]
 
+    search_fields = ['name']
+
 
 class GroupMemberInline(admin.TabularInline):
 
