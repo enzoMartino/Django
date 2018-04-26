@@ -11,7 +11,11 @@ class GroupAdmin(admin.ModelAdmin):
 
     list_filter = ['members']
 
-    list_display = ['name', 'description', 'slug',]
+    list_display = ['id', 'name', 'description', 'slug',]
+
+    list_display_links = ['id']
+
+    list_editable = ['name',]
 
 
 
